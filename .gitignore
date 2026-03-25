@@ -1,0 +1,23 @@
+# Generated data files
+bronze/
+silver/
+gold/
+quarantine/
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Parquet files
+*.parquet
+
+# Kaggle credentials
+kaggle.json
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
