@@ -3,6 +3,7 @@ bronze/
 silver/
 gold/
 quarantine/
+data/
 
 # Database files
 *.db
