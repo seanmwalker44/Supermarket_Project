@@ -118,7 +118,7 @@ Cloud Deployment of Sales of a Supermarket Pipeline
 
 ### 6. How to Run Pipeline
 #### Prerequisites
-- Python 3.x installed
+- Python 3.14.3 installed
 - Kaggle account with API token generated
 - Dependencies installed:
 ```bash
@@ -145,23 +145,26 @@ Run all cells top to bottom. Cells are organized in the following order.
 ### Running the Report Queries
 Open a SQLite connection to supermarket.db and execute:
 ```bash
-sqlite3 supermarket.db < SQL Queries\Average Rating by Category and Branch.sql
-```
-```bash
-sqlite3 supermarket.db < SQL Queries\Average Transaction by Store, Product, Month.sql
-```
-```bash
-sqlite3 supermarket.db < SQL Queries\Monthly Revenue by Branch.sql
-```
-```bash
 sqlite3 supermarket.db < SQL Queries\Reveune and Income by Store.sql
+```
+```bash
+sqlite3 -column -header supermarket_sales.db < "SQL Queries/Average Rating by Category and Branch.sql"
+```
+```bash
+sqlite3 -column -header supermarket_sales.db < "SQL Queries/Average Transaction by Store, Product, Month.sql"
+```
+```bash
+sqlite3 -column -header supermarket_sales.db < "SQL Queries/Monthly Revenue by Branch.sql"
+```
+```bash
+sqlite3 -column -header supermarket_sales.db < "SQL Queries/Revenue and Income by Store.sql"
 ```
 Or run the queries directly in the notebook using:
 ```python
 import sqlite3
 import pandas as pd
 
-conn = sqlite3.connect('supermarket.db')
+conn = sqlite3.connect('supermarket_sales.db')
 df = pd.read_sql("SELECT * FROM fact_sales", conn)
 ```
 ### 7. Notes and Issues
