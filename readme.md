@@ -5,23 +5,23 @@
 ## Project Structure
 ![Architecture Diagram](Images/Architecture_diagram.jpeg)    
 
-project/
-|- data/
-  |- raw/
-  |- bronze/
-  |- silver/
-  |- gold/
-|-notebooks
-  |- python-etl.ipynb
-|-SQL Queries
-  |- create_tables.sql
-  |- Average Rating by Category and Branch.sql
-  |- Average Transaction by Store, Product, Month.sql
-  |- Monthly Revenue by Branch.sql
-  |- Reveune and Income by Store.sql
-|- supermarket_sales.db
-|-requirements.txt
-|-README.md
+project/    
+|- data/    
+  |- raw/    
+  |- bronze/    
+  |- silver/    
+  |- gold/    
+|-notebooks    
+  |- python-etl.ipynb    
+|-SQL Queries    
+  |- create_tables.sql    
+  |- Average Rating by Category and Branch.sql    
+  |- Average Transaction by Store, Product, Month.sql    
+  |- Monthly Revenue by Branch.sql    
+  |- Reveune and Income by Store.sql    
+|- supermarket_sales.db    
+|-requirements.txt    
+|-README.md    
 
 ## Requirements
 - Python version 3.14.13
@@ -102,7 +102,7 @@ Cloud Deployment of Sales of a Supermarket Pipeline
 -BI/Reporting - Analytical reports are created by querying the Gold level data. Queries join the fact and dimension tables to aggregate data to provide insight to key performance indicators. Business Intelligence tools can be connected to the Gold level to create visualization and create reports that can be refreshed on a schedule.    
 
 
-![[Cloud Deployment]](Images/Cloud Deployment (1).jpeg)    
+   ![Cloud Deployment](Images/Cloud_Deployment.jpeg)
 
 ### 6. How to Run Pipeline
 #### Prerequisites
