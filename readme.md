@@ -5,6 +5,7 @@
 ## Project Structure
 ![Architecture Diagram](Images/Architecture_diagram.jpeg)    
 
+```bash
 project/    
 |- data/    
   |- raw/    
@@ -22,6 +23,7 @@ project/
 |- supermarket_sales.db    
 |-requirements.txt    
 |-README.md    
+```
 
 ## Requirements
 - Python version 3.14.13
