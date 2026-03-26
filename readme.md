@@ -91,27 +91,27 @@ project/
 ### 5. Cloud Deployment
 Cloud Deployment of Sales of a Supermarket Pipeline
 
--Source Data - Data is pulled in from the Kaggle API in the form of CSV files.    
+-**Source Data** - Data is pulled in from the Kaggle API in the form of CSV files.    
 
--Cloud Storage - CSV files are stored in cloud storage - Amazon S3, Azure Data Lake Storage, Google Cloud Storage. Objects land in cloud storage and serve as the beginning point of the pipeline.    
+-**Cloud Storage** - CSV files are stored in cloud storage - Amazon S3, Azure Data Lake Storage, Google Cloud Storage. Objects land in cloud storage and serve as the beginning point of the pipeline.    
 
--Orchestration  - Orchestration can be done through Databricks Lakeflows. This would allow data to be pulled in and data quality checks to be run on the data based on appropriate triggers. Lakeflows can be scheduled to run batches, upon file arrival, or on a continuous basis. Lakeflows also allows orchestration with dependencies, ensuring that downstream tasks are only executed if upstream tasks succeed.For this application, I believe that Auto Loader would be ideal as it would ensure that files are loaded as they arrive and would ensure that each file is processed only once.    
+-**Orchestration**  - Orchestration can be done through Databricks Lakeflows. This would allow data to be pulled in and data quality checks to be run on the data based on appropriate triggers. Lakeflows can be scheduled to run batches, upon file arrival, or on a continuous basis. Lakeflows also allows orchestration with dependencies, ensuring that downstream tasks are only executed if upstream tasks succeed.For this application, I believe that Auto Loader would be ideal as it would ensure that files are loaded as they arrive and would ensure that each file is processed only once.    
 
--Bronze Layer - Auto Loader detects new files and loads the raw data into Bronze level tables as Delta tables. No transformations are applied on the bronze level and this layer serves as a historical record of the raw data.    
+-**Bronze Layer** - Auto Loader detects new files and loads the raw data into Bronze level tables as Delta tables. No transformations are applied on the bronze level and this layer serves as a historical record of the raw data.    
 
--Silver Layer - Bronze data is cleaned and normalized into the silver layer. Column names are cleaned, data types are cast, duplicated records are identified, and null values are flagged. Records that violate the data quality constraints are then quarantined into a separate Delta table for later review.    
+-**Silver Layer** - Bronze data is cleaned and normalized into the silver layer. Column names are cleaned, data types are cast, duplicated records are identified, and null values are flagged. Records that violate the data quality constraints are then quarantined into a separate Delta table for later review.    
 
--Gold Layer - Silver level data is modeled into fact and dimension tables. Dimensions include date, product, store, and customer.  Surrogate keys are assigned in the dimension tables with foreign key relationships established with the fact table. The gold layer tables will be used as a source of truth and will be used for reporting.    
+-**Gold Layer** - Silver level data is modeled into fact and dimension tables. Dimensions include date, product, store, and customer.  Surrogate keys are assigned in the dimension tables with foreign key relationships established with the fact table. The gold layer tables will be used as a source of truth and will be used for reporting.    
 
--Data Warehouse - Bronze, Silver, and Gold level tables are all stored in Delta tables, allowing for time travel recovery and transactional logging. Gold level tables are written to the data warehouse. This can be done through Databricks SQL, Google BigQuery, Azure SQL Database, Snowflake and others.     
+-**Data Warehouse** - Bronze, Silver, and Gold level tables are all stored in Delta tables, allowing for time travel recovery and transactional logging. Gold level tables are written to the data warehouse. This can be done through Databricks SQL, Google BigQuery, Azure SQL Database, Snowflake and others.     
 
--Security - Kaggle API credentials can be stored using Databricks secrets. This ensures that the API key is not hardcoded into the pipeline. Role based access control will be applied at all levels, limiting access to Bronze and Silver layers to service accounts and engineers, with Gold level tables being available to analysts and business intelligence tools. Proper governance and access of the data ensures that access is provided to only those who need it.    
+-**Security** - Kaggle API credentials can be stored using Databricks secrets. This ensures that the API key is not hardcoded into the pipeline. Role based access control will be applied at all levels, limiting access to Bronze and Silver layers to service accounts and engineers, with Gold level tables being available to analysts and business intelligence tools. Proper governance and access of the data ensures that access is provided to only those who need it.    
 
--Continuous Integration/Continuous Deployment - Pipeline code is maintained and version controlled in a GitHub repository. Changes are deployed to Databricks through GitHub actions. Development is done in a dev environment against a snapshot of data from the production environment. Once integration and unit testing is passed in dev, code changes are promoted to production and deployed.    
+-**Continuous Integration/Continuous Deployment** - Pipeline code is maintained and version controlled in a GitHub repository. Changes are deployed to Databricks through GitHub actions. Development is done in a dev environment against a snapshot of data from the production environment. Once integration and unit testing is passed in dev, code changes are promoted to production and deployed.    
 
--Monitoring - Databricks provides observability into pipeline runs. Pipeline failures can be alerted via email, Slack, Microsoft Teams, ensuring that pipeline failures are caught and addressed quickly.    
+-**Monitoring** - Databricks provides observability into pipeline runs. Pipeline failures can be alerted via email, Slack, Microsoft Teams, ensuring that pipeline failures are caught and addressed quickly.    
 
--BI/Reporting - Analytical reports are created by querying the Gold level data. Queries join the fact and dimension tables to aggregate data to provide insight to key performance indicators. Business Intelligence tools can be connected to the Gold level to create visualization and create reports that can be refreshed on a schedule.    
+-**BI/Reporting** - Analytical reports are created by querying the Gold level data. Queries join the fact and dimension tables to aggregate data to provide insight to key performance indicators. Business Intelligence tools can be connected to the Gold level to create visualization and create reports that can be refreshed on a schedule.    
 
 
    ![Cloud Deployment](Images/Cloud_Deployment.jpeg)
@@ -144,9 +144,7 @@ Run all cells top to bottom. Cells are organized in the following order.
 
 ### Running the Report Queries
 Open a SQLite connection to supermarket.db and execute:
-```bash
-sqlite3 supermarket.db < SQL Queries\Reveune and Income by Store.sql
-```
+
 ```bash
 sqlite3 -column -header supermarket_sales.db < "SQL Queries/Average Rating by Category and Branch.sql"
 ```
