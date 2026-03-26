@@ -3,7 +3,7 @@
  This is a medallion architecture data pipeline built with Python that ingests Sales of a Supermarket data from Kaggle.com This pipeline applies data quality checks, ensures idempotency, and uses SQLite to load data into a dimensional modeled database.
 
 ## Project Structure
-![Architecture Diagram](<Architecture_diagram.jpeg>)
+![Architecture Diagram](<Images\Architecture_diagram.jpeg>)
 project/
 |- data/
   |- raw/
@@ -63,13 +63,13 @@ project/
 - 
 ### 4. Reporting
 - Product Rating Rankings by City - Ranks the product lines by the average customer rating by city. Includes transaction count and total revenue.
-![Product Rating Rankings by City](Product_Rating_Rankings_by_City.png)
+![Product Rating Rankings by City](Images\Product_Rating_Rankings_by_City.png)
 - Top 3 Product Lines by Average atransaction Values - Ranks product lines by average transaction value by city and month. Only the top three categories are returned.
-![Top 3 Product Lines by Average atransaction Values](top3_product_lines.png)
+![Top 3 Product Lines by Average atransaction Values](Images\top3_product_lines.png)
 - Month over Month Revenue Trend by Branch - Compares revenue by store and month to previous month. Provides insight to revenue treands.
-![Month over Month Revenue Trend by Branch](month-over_month.png)
+![Month over Month Revenue Trend by Branch](Images\month-over_month.png)
 - Gross Margain and Revenue By Product Line and Store - Sums total revenue, gross income, and gross margin percent by product line across store/city.
-![Gross Margain and Revenue By Product Line and Store](gross_margin.png)
+![Gross Margain and Revenue By Product Line and Store](Images\gross_margin.png)
 
 ### 5. Cloud Deployment
 Cloud Deployment of Sales of a Supermarket Pipeline
@@ -85,7 +85,7 @@ Cloud Deployment of Sales of a Supermarket Pipeline
 -Continuous Integration/Continuous Deployment - Pipeline code is maintained and version controlled in a GitHub repository. Changes are deployed to Databricks through GitHub actions. Development is done in a dev environment against a snapshot of data from the production environment. Once integration and unit testing is passed in dev, code changes are promoted to production and deployed.
 -Monitoring - Databricks provides observability into pipeline runs. Pipeline failures can be alerted via email, Slack, Microsoft Teams, ensuring that pipeline failures are caught and addressed quickly.
 -BI/Reporting - Analytical reports are created by querying the Gold level data. Queries join the fact and dimension tables to aggregate data to provide insight to key performance indicators. Business Intelligence tools can be connected to the Gold level to create visualization and create reports that can be refreshed on a schedule.
-![[Cloud Deployment]](<Cloud Deployment (1).jpeg>)
+![[Cloud Deployment]](<Images\Cloud Deployment (1).jpeg>)
 ### 6. How to Run Pipeline
 #### Prerequisites
 - Python 3.x installed
